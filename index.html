@@ -117,7 +117,7 @@
     height: 100vh;
     display: flex;
     align-items: center;
-    padding: 80px 15% 10px ;
+    padding: 90px 15% 10px ;
     position: relative;
     overflow: hidden;
     background: var(--bg-primary);
@@ -822,16 +822,25 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
+       @media (max-width: 992px) {
             .hero {
                 flex-direction: column;
                 justify-content: center;
+                padding: 200px 10% 10px; /* Adjusted padding for mobile */
+            }
+
+            .hero-content h1 {
+                font-size: 0.25rem;
+            }
+
+            .hero-content h5 {
+                font-size: 0.25rem;
             }
 
             .hero-photo {
                 margin-right: 0;
                 margin-bottom: 2rem;
-                max-width: 300px;
+                max-width: 200px;
             }
 
             .about-content {
