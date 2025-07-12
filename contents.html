@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binula Dewmith - Content Marketing Portfolio</title>
+    <link rel="icon" href="/letter-d (1).png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --accent-start: #ff3333;
+            --accent-mid: #ff5e1a;
+            --accent-end: #ff8c1a;
+            --glass: rgba(26, 26, 26, 0.7);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 51, 51, 0.4);
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .back-button:hover::before {
+            left: 100%;
+        }
+
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 90px 15% 10px;
+            position: relative;
+            background: var(--bg-primary);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content p {
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 51, 51, 0.4);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .section {
+            padding: 6rem 10%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            border-radius: 2px;
+        }
+
+        .experience-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .experience-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-mid));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .experience-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-mid);
+        }
+
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img, .project-video {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-img img, .project-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img img, .project-card:hover .project-video img {
+            transform: scale(1.15);
+        }
+
+        .project-video .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 51, 51, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+
+        .project-card:hover .project-video .play-button {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 51, 51, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+        }
+
+        .project-img::after, .project-video::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,51,51,0.1), rgba(255,140,26,0.3));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img::after, .project-card:hover .project-video::after {
+            opacity: 1;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-mid));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .project-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-tag {
+            background: rgba(255, 51, 51, 0.2);
+            color: var(--accent-mid);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: var(--transition);
+        }
+
+        .project-links a:hover {
+            color: var(--accent-mid);
+        }
+
+        footer {
+            background: linear-gradient(to right, var(--bg-secondary), var(--bg-primary));
+            padding: 4rem 10% 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-mid));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-mid);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: var(--bg-primary);
+            border-radius: 50%;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            transform: translateY(-3px);
+        }
+
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: 80px 15% 10px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 40px;
+                margin-right: 20px;
+                text-align: left;
+                width: calc(100% - 60px);
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .back-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">Back to Home</a>
+
+    <section class="hero" id="home">
+        <div class="hero-content hidden">
+            <h1>Content Marketing Portfolio</h1>
+            <p>Explore my extensive experience in creating impactful video content and managing social media campaigns for British Way English Academy and pro bono projects for Leo Club of Matara Nilwala.</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <section class="section" id="experience">
+        <h2 class="section-title">My Marketing Experience</h2>
+        <div class="experience-content hidden">
+            <h3>Senior Marketing Executive at British Way English Academy</h3>
+            <p><strong>Duration:</strong> 2023 - Present (3 Years)</p>
+            <p>As the Senior Marketing Executive for the Galle and Matara branches, I lead all content creation and social media strategy, driving engagement and brand growth across multiple platforms.</p>
+            <ul>
+                <li>Managed and created content for Facebook, YouTube, TikTok, and Instagram, increasing follower engagement by 45%.</li>
+                <li>Produced promotional videos, posters, and digital campaigns to attract new students and promote academy events.</li>
+                <li>Organized and marketed major events, handling logistics and creating post-event content to maximize reach.</li>
+            <br><br>
+            </ul>
+            <div class="social-links">
+                <a href="https://web.facebook.com/BritishWayMataraOfficial/" target="_blank"><i class="fab fa-facebook"></i> British Way Facebook</a>
+                <a href="https://www.youtube.com/@BritishWay-Matara" target="_blank"><i class="fab fa-youtube"></i> British Way YouTube</a>
+                <a href="https://www.tiktok.com/@britishway_matara" target="_blank"><i class="fab fa-tiktok"></i> British Way TikTok</a>
+                <a href="https://www.instagram.com/britishway_matara" target="_blank"><i class="fab fa-instagram"></i> British Way Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <h2 class="section-title">Marketing Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card hidden">
+                <div class="project-video">
+                    <img src="/new-year-festival-thumbnail.jpg" alt="New Year Festival After Movie">
+                    <a href="https://youtu.be/KtyfFfkKru0?si=qhVxQoebvXEiBJW8" target="_blank" class="play-button"><i class="fas fa-play"></i></a>
+                </div>
+                <div class="project-info">
+                    <h3>New Year Festival After Movie (Leo Club)</h3>
+                    <p>A vibrant after movie for the Leo Club of Matara Nilwala’s New Year Festival, capturing the event’s energy and community spirit. Created pro bono to support local initiatives.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Adobe Premiere</span>
+                        <span class="tool-tag">Inshot</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://youtu.be/KtyfFfkKru0?si=qhVxQoebvXEiBJW8" target="_blank"><i class="fas fa-external-link-alt"></i> View Full Video</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card hidden">
+                <div class="project-video">
+                    <img src="/english-hunt-thumbnail.jpg" alt="English Hunt After Movie">
+                    <a href="https://youtu.be/ANzRaBLLmOk?si=u0IpHYH4HtdGnWo9" target="_blank" class="play-button"><i class="fas fa-play"></i></a>
+                </div>
+                <div class="project-info">
+                    <h3>English Hunt After Movie (Leo Club)</h3>
+                    <p>An engaging after movie for the Leo Club’s English Hunt project for school students, highlighting learning through fun activities. Created pro bono to promote education.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Adobe Premiere</span>
+                        <span class="tool-tag">Canva</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://youtu.be/ANzRaBLLmOk?si=u0IpHYH4HtdGnWo9" target="_blank"><i class="fas fa-external-link-alt"></i> View Full Video</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card hidden">
+                <div class="project-video">
+                    <img src="/chess-competition-thumbnail.jpg" alt="Chess Competition After Movie">
+                    <a href="https://youtu.be/uOANd093dDo?si=FM3nL5-B-rZqSlZR" target="_blank" class="play-button"><i class="fas fa-play"></i></a>
+                </div>
+                <div class="project-info">
+                    <h3>All-Island Chess Competition After Movie (Leo Club)</h3>
+                    <p>A dynamic recap video for the Leo Club’s All-Island Chess Competition, showcasing competitive moments and participant enthusiasm. Created pro bono to support youth engagement.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Adobe Premiere</span>
+                        <span class="tool-tag">Inshot</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://youtu.be/uOANd093dDo?si=FM3nL5-B-rZqSlZR" target="_blank"><i class="fas fa-external-link-alt"></i> View Full Video</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card hidden">
+                <div class="project-video">
+                    <img src="/british-way-promo-thumbnail.jpg" alt="British Way Promotional Video">
+                    <a href="#" target="_blank" class="play-button"><i class="fas fa-play"></i></a>
+                </div>
+                <div class="project-info">
+                    <h3>British Way Promotional Video</h3>
+                    <p>A professional promotional video for British Way English Academy, designed to attract new students with compelling visuals and storytelling.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Adobe Premiere</span>
+                        <span class="tool-tag">Inshot</span>
+                        <span class="tool-tag">Canva</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#"><i class="fas fa-external-link-alt"></i> View Full Video</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card hidden">
+                <div class="project-img">
+                    <img src="/british-way-graphics.jpg" alt="British Way Social Media Campaign">
+                </div>
+                <div class="project-info">
+                    <h3>British Way Social Media Graphics</h3>
+                    <p>A series of Instagram and Facebook graphics for British Way, promoting new courses and events to drive engagement and enrollment.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Canva</span>
+                        <span class="tool-tag">Photoshop</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#"><i class="fas fa-external-link-alt"></i> View Campaign</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="index.html#about"><i class="fas fa-chevron-right"></i> About</a>
+                    <a href="index.html#projects"><i class="fas fa-chevron-right"></i> Projects</a>
+                    <a href="index.html#experience"><i class="fas fa-chevron-right"></i> Experience</a>
+                    <a href="index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <div class="footer-links">
+                    <a href="mailto:downithmagamage@gmail.com"><i class="fas fa-envelope"></i> downithmagamage@gmail.com</a>
+                    <a href="tel:+94700353409"><i class="fas fa-phone"></i> +94 70 0353 409</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> Matara, Sri Lanka</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Social Media</h3>
+                <div class="footer-links">
+                    <a href="https://web.facebook.com/BritishWayMataraOfficial/" target="_blank"><i class="fab fa-facebook"></i> British Way Facebook</a>
+                    <a href="https://www.youtube.com/@BritishWay-Matara" target="_blank"><i class="fab fa-youtube"></i> British Way YouTube</a>
+                    <a href="https://www.tiktok.com/@britishway_matara" target="_blank"><i class="fab fa-tiktok"></i> British Way TikTok</a>
+                    <a href="https://www.instagram.com/britishway_matara" target="_blank"><i class="fab fa-instagram"></i> British Way Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 Binula Dewmith. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://github.com/DewmithMagamage"><i class="fab fa-github"></i></a>
+                <a href="www.linkedin.com/in/dewmith-magamage"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
