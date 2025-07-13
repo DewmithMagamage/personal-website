@@ -86,7 +86,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 90px 15% 10px;
+            padding: 100px 15% 10px;
             position: relative;
             background: var(--bg-primary);
             text-align: center;
@@ -104,6 +104,7 @@
 
         .hero-content p {
             margin-bottom: 2rem;
+            text-align: center;
             color: var(--text-secondary);
             max-width: 600px;
             font-size: 1.1rem;
@@ -216,6 +217,54 @@
             color: var(--accent-mid);
         }
 
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .certification-card {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            padding: 1.5rem;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .certification-card h3 {
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-mid));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .certification-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .certification-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: var(--transition);
+        }
+
+        .certification-links a:hover {
+            color: var(--accent-mid);
+        }
 
         .projects-grid {
             display: grid;
@@ -450,10 +499,10 @@
 
         @media (max-width: 992px) {
             .hero {
-                padding: 80px 15% 10px;
+                padding: 100px 15% 10px;
             }
 
-            .projects-grid {
+            .projects-grid, .certifications-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -523,8 +572,9 @@
 
     <section class="hero" id="home">
         <div class="hero-content hidden">
-            <h1>Content Marketing Portfolio</h1>
-            <p>Explore my extensive experience in creating impactful video content and managing social media campaigns for British Way English Academy and pro bono projects for Leo Club of Matara Nilwala.</p>
+            <h1>Showcase of Creative Marketing Mastery</h1>
+            <br>
+            <h4>Explore my extensive experience in creating impactful video content and managing social media campaigns for British Way English Academy and pro bono projects for Leo Club of Matara Nilwala.</h4><br>
             <a href="#projects" class="btn">View My Work</a>
         </div>
     </section>
@@ -539,7 +589,6 @@
                 <li>Managed and created content for Facebook, YouTube, TikTok, and Instagram, increasing follower engagement by 45%.</li>
                 <li>Produced promotional videos, posters, and digital campaigns to attract new students and promote academy events.</li>
                 <li>Organized and marketed major events, handling logistics and creating post-event content to maximize reach.</li>
-            <br><br>
             </ul>
             <div class="social-links">
                 <a href="https://web.facebook.com/BritishWayMataraOfficial/" target="_blank"><i class="fab fa-facebook"></i> British Way Facebook</a>
@@ -550,12 +599,53 @@
         </div>
     </section>
 
+    <section class="section" id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certifications-grid">
+            <div class="certification-card hidden">
+                <h3>Marketing Foundations</h3>
+                <p>Issued by Linkedin</p>
+                <div class="certification-links">
+                    <a href="https://www.linkedin.com/learning/certificates/d48458705febac3499bbe546f9b9c65103438485429a946c1fe709bea999df70?trk=share_certificate" target="_blank"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                </div>
+            </div>
+            <div class="certification-card hidden">
+                <h3>Graphic Design Bootcamp Certificate</h3>
+                <p>Issued by Leo Club, University of Delhi </p>
+                <div class="certification-links">
+                    <a href="https://drive.google.com/file/d/1VG_y1AoY2-YHJnacEHtT6C04LNvh6WdC/view?usp=sharing" target="_blank"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                </div>
+            </div>
+            <div class="certification-card hidden">
+                <h3>Premiere Pro for Social Media Content</h3>
+                <p>Issued by Linkedin</p>
+                <div class="certification-links">
+                    <a href="https://www.linkedin.com/learning/certificates/93a6f619f3ec9a1a6b1f3f9126df192db6999ce03e66c9940b4cc1e1c1ffb766?trk=share_certificate" target="_blank"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                </div>
+            </div>
+            <div class="certification-card hidden">
+                <h3>Learning Portrait Photography</h3>
+                <p>Issued by Linkedin</p>
+                <div class="certification-links">
+                    <a href="https://www.linkedin.com/learning/certificates/99667596982421f5d9c3b8642c44e8520b76c799d88a81ea531a32e02cdaa868?trk=share_certificate" target="_blank"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                </div>
+            </div>
+            <div class="certification-card hidden">
+                <h3>professional Certificate in Digital Marketing</h3>
+                <p>Issued by SLIM</p>
+                <div class="certification-links">
+                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section" id="projects">
         <h2 class="section-title">Marketing Projects</h2>
         <div class="projects-grid">
             <div class="project-card hidden">
                 <div class="project-video">
-                    <img src="/new-year-festival-thumbnail.jpg" alt="New Year Festival After Movie">
+                    <img src="/leo event 1.png" alt="New Year Festival After Movie">
                     <a href="https://youtu.be/KtyfFfkKru0?si=qhVxQoebvXEiBJW8" target="_blank" class="play-button"><i class="fas fa-play"></i></a>
                 </div>
                 <div class="project-info">
@@ -573,7 +663,7 @@
 
             <div class="project-card hidden">
                 <div class="project-video">
-                    <img src="/english-hunt-thumbnail.jpg" alt="English Hunt After Movie">
+                    <img src="/leo event 2.png" alt="English Hunt After Movie">
                     <a href="https://youtu.be/ANzRaBLLmOk?si=u0IpHYH4HtdGnWo9" target="_blank" class="play-button"><i class="fas fa-play"></i></a>
                 </div>
                 <div class="project-info">
@@ -591,7 +681,7 @@
 
             <div class="project-card hidden">
                 <div class="project-video">
-                    <img src="/chess-competition-thumbnail.jpg" alt="Chess Competition After Movie">
+                    <img src="/leo event 3.png" alt="Chess Competition After Movie">
                     <a href="https://youtu.be/uOANd093dDo?si=FM3nL5-B-rZqSlZR" target="_blank" class="play-button"><i class="fas fa-play"></i></a>
                 </div>
                 <div class="project-info">
@@ -602,7 +692,7 @@
                         <span class="tool-tag">Inshot</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://youtu.be/uOANd093dDo?si=FM3nL5-B-rZqSlZR" target="_blank"><i class="fas fa-external-link-alt"></i> View Full Video</a>
+                        <a href="https://youtu.be/uOAnd093dDo?si=FM3nL5-B-rZqSlZR" target="_blank"><i class="fas fa-external-link-alt"></i> View Full Video</a>
                     </div>
                 </div>
             </div>
