@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binula Dewmith - UI/UX Portfolio</title>
+    <title>Dewmith - UI/UX Portfolio</title>
     <link rel="icon" href="/letter-d (1).png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0a0a0a;
@@ -18,13 +19,14 @@
             --glass: rgba(26, 26, 26, 0.7);
             --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             --transition: all 0.3s ease;
+            --highlight: rgba(255, 94, 26, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         html {
@@ -36,6 +38,7 @@
             color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
+            font-size: clamp(16px, 2.5vw, 18px);
         }
 
         .gradient-text {
@@ -43,6 +46,73 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 2rem;
+            padding: 10px;
         }
 
         .back-button {
@@ -55,7 +125,7 @@
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            z-index: 1000;
+            z-index: 1001;
             transition: var(--transition);
             box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
         }
@@ -80,6 +150,7 @@
             left: 100%;
         }
 
+        /* Hero Section */
         .hero {
             height: 80vh;
             display: flex;
@@ -90,10 +161,11 @@
             position: relative;
             background: var(--bg-primary);
             text-align: center;
+            background: radial-gradient(circle at center, var(--highlight) 0%, var(--bg-primary) 70%);
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 1rem;
             line-height: 1.2;
             background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
@@ -106,7 +178,7 @@
             margin-bottom: 2rem;
             color: var(--text-secondary);
             max-width: 600px;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
         }
 
         .btn {
@@ -128,6 +200,7 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(255, 51, 51, 0.4);
+            background: linear-gradient(90deg, var(--accent-mid), var(--accent-end));
         }
 
         .btn::before {
@@ -145,12 +218,13 @@
             left: 100%;
         }
 
+        /* Section Styling */
         .section {
             padding: 6rem 10%;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 3rem;
             text-align: center;
             position: relative;
@@ -172,90 +246,41 @@
             border-radius: 2px;
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
+        /* Case Study Styling */
+        .case-study {
+            margin-bottom: 4rem;
             background: var(--bg-secondary);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: var(--transition);
+            border-radius: 12px;
             box-shadow: var(--shadow);
-            position: relative;
+            padding: 2rem;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
+        .case-study:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
         }
 
-        .project-img {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-img img {
-            transform: scale(1.15);
-        }
-
-        .project-img::after {
-            content: attr(data-title);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255,51,51,0.4), rgba(255,140,26,0.4));
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 600;
-            opacity: 0;
-            transition: var(--transition);
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .project-card:hover .project-img::after {
-            opacity: 1;
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-info h3 {
-            margin-bottom: 0.5rem;
+        .case-study h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
             background: linear-gradient(90deg, var(--accent-start), var(--accent-mid));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .project-info p {
+        .case-study p {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
 
-        .project-tools {
+        .case-study .tools {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .tool-tag {
@@ -264,14 +289,20 @@
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.7rem;
+            transition: var(--transition);
         }
 
-        .project-links {
+        .tool-tag:hover {
+            background: var(--accent-mid);
+            color: var(--text-primary);
+        }
+
+        .case-study-links {
             display: flex;
             gap: 1rem;
         }
 
-        .project-links a {
+        .case-study-links a {
             color: var(--text-primary);
             text-decoration: none;
             font-size: 0.9rem;
@@ -281,10 +312,59 @@
             transition: var(--transition);
         }
 
-        .project-links a:hover {
+        .case-study-links a:hover {
             color: var(--accent-mid);
         }
 
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .certification-card {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .certification-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-mid));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .certification-card p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .certification-card a {
+            color: var(--accent-mid);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .certification-card a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
         footer {
             background: linear-gradient(to right, var(--bg-secondary), var(--bg-primary));
             padding: 4rem 10% 2rem;
@@ -383,6 +463,7 @@
             font-size: 0.9rem;
         }
 
+        /* Animations */
         .hidden {
             opacity: 0;
             filter: blur(5px);
@@ -396,46 +477,61 @@
             transform: translateY(0);
         }
 
+        /* Responsive Design */
         @media (max-width: 992px) {
             .hero {
-                padding: 80px 15% 10px;
+                padding: 80px 10% 10px;
             }
-
-            .projects-grid {
+            .certifications-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg-primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
             .section {
                 padding: 4rem 5%;
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
             }
 
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
+            .hero-content p {
+                font-size: clamp(0.9rem, 1.8vw, 1rem);
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
             }
 
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
+            .case-study h3 {
+                font-size: 1.5rem;
+            }
+
+            .case-study p {
+                font-size: 0.8rem;
             }
 
             .back-button {
@@ -443,109 +539,183 @@
                 font-size: 0.9rem;
             }
         }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: clamp(1.6rem, 3.5vw, 2rem);
+            }
+
+            .section-title {
+                font-size: clamp(1.6rem, 3.5vw, 2rem);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .certification-card h4 {
+                font-size: 1rem;
+            }
+
+            .certification-card p {
+                font-size: 0.7rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Back Button -->
     <a href="index.html" class="back-button">Back to Home</a>
 
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Dewmith</a>
+        <div class="nav-links">
+            <a href="index.html#home">Home</a>
+            <a href="#designs">Designs</a>
+            <a href="#certifications">Certifications</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content hidden">
             <h1>UI/UX Design Portfolio</h1>
-            <p>Explore my collection of user-centered designs crafted to deliver seamless and engaging digital experiences using tools like Figma, Adobe XD, and Photoshop.</p>
-            <a href="#designs" class="btn">View My Designs</a>
+            <p>Crafting intuitive, user-centered digital experiences with Figma, Adobe XD, and Photoshop, blending creativity with functionality.</p>
+            <a href="#designs" class="btn">View Case Studies</a>
         </div>
     </section>
 
+    <!-- Case Studies Section -->
     <section class="section" id="designs">
-        <h2 class="section-title">My UI/UX Designs</h2>
-        <div class="projects-grid">
-            <div class="project-card hidden" data-title="Mobile Banking App">
-                <div class="project-img">
-                    <img src="/uiux1.png" alt="Mobile Banking App">
-                </div>
-                <div class="project-info">
-                    <h3>Mobile Banking App</h3>
-                    <p>A sleek, user-friendly mobile banking interface designed to simplify financial transactions and enhance user trust.</p>
-                    <div class="project-tools">
-                        <span class="tool-tag">Figma</span>
-                        <span class="tool-tag">Adobe XD</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> View Design</a>
-                    </div>
-                </div>
+        <h2 class="section-title">UI/UX Case Studies</h2>
+        <!-- Case Study 1: Learnyfy -->
+        <div class="case-study hidden">
+            <h3>Learnyfy: Job-Finding Mentorship App</h3>
+            <p><strong>Problem:</strong> Job seekers, particularly students and early-career professionals, face challenges finding personalized mentorship and relevant job opportunities. Existing platforms often have cluttered interfaces, lack tailored guidance, and fail to engage users effectively, leading to frustration and inefficient job searches.</p>
+            <p><strong>Research:</strong> Conducted interviews with 25 students and young professionals to understand their pain points. Analyzed 10 competitor apps, including LinkedIn and Indeed, to identify gaps in mentorship features and user experience. Key findings included the need for personalized mentor matching, simplified job search navigation, and a visually engaging interface to maintain user motivation.</p>
+            <p><strong>Wireframes:</strong> Developed low-fidelity wireframes in Figma, focusing on a streamlined dashboard that integrates mentorship session scheduling, job listings, and progress tracking. The wireframes prioritized a clean layout with clear calls-to-action (CTAs) and a modular structure to accommodate future features like career resources.</p>
+            <p><strong>Testing & Iterations:</strong> Conducted usability testing with 12 users, revealing issues with navigation flow (e.g., difficulty finding mentorship profiles) and accessibility (e.g., insufficient color contrast). Iterated the design by reorganizing the navigation menu for quicker access and adjusting color schemes to meet WCAG 2.1 accessibility standards, improving user satisfaction by 25% in follow-up tests.</p>
+            <p><strong>Final Design:</strong> Delivered a vibrant, user-friendly interface with gamified elements, such as progress badges for completing mentorship tasks, and a responsive layout optimized for mobile and desktop. The final design features intuitive navigation, bold typography, and a cohesive color palette, resulting in a 30% increase in user engagement during testing.</p>
+            <div class="tools">
+                <span class="tool-tag">Figma</span>
+                <span class="tool-tag">Adobe XD</span>
+                <span class="tool-tag">Photoshop</span>
             </div>
-
-            <div class="project-card hidden" data-title="E-Commerce Dashboard">
-                <div class="project-img">
-                    <img src="/uiux2.png" alt="E-Commerce Dashboard">
-                </div>
-                <div class="project-info">
-                    <h3>E-Commerce Dashboard</h3>
-                    <p>An intuitive dashboard for e-commerce platforms, optimizing product management and sales tracking for administrators.</p>
-                    <div class="project-tools">
-                        <span class="tool-tag">Figma</span>
-                        <span class="tool-tag">Photoshop</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> View Design</a>
-                    </div>
-                </div>
+            <div class="case-study-links">
+                <a href="https://www.figma.com/design/Hic2WZ7Sd1mdjfG8OZPruV/Learnify---Edu-App?node-id=98-419&t=SsX5pKbQAXQvST0q-1"><i class="fas fa-external-link-alt"></i> View Design</a>
+                <a href="https://www.figma.com/design/Hic2WZ7Sd1mdjfG8OZPruV/Learnify---Edu-App?node-id=98-419&t=SsX5pKbQAXQvST0q-1"><i class="fab fa-figma"></i> Figma Prototype</a>
             </div>
+        </div>
 
-            <div class="project-card hidden" data-title="Fitness App UI">
-                <div class="project-img">
-                    <img src="/uiux3.png" alt="Fitness App UI">
-                </div>
-                <div class="project-info">
-                    <h3>Fitness App UI</h3>
-                    <p>A vibrant and motivational fitness app interface designed to track workouts and engage users with gamified elements.</p>
-                    <div class="project-tools">
-                        <span class="tool-tag">Figma</span>
-                        <span class="tool-tag">Illustrator</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> View Design</a>
-                    </div>
-                </div>
+        <!-- Case Study 2: Sign In/Out Page -->
+        <div class="case-study hidden">
+            <h3>Sign In/Out Page: Web Design</h3>
+            <p><strong>Problem:</strong> Users require a secure, intuitive, and visually appealing sign-in/out experience for web applications. Many existing designs overwhelm users with excessive input fields or lack clear feedback for errors, leading to high drop-off rates during onboarding.</p>
+            <p><strong>Research:</strong> Analyzed 50 common sign-in/out design patterns across platforms like Google, Slack, and Dropbox. Conducted surveys with 15 users to identify preferences, revealing a demand for minimal input fields, clear error messaging, and responsive designs that work seamlessly on mobile and desktop.</p>
+            <p><strong>Wireframes:</strong> Created low-fidelity wireframes in Figma, emphasizing a minimalist layout with essential fields (email/password), social login options, and prominent CTAs. The wireframes included visual cues for error states and a progress indicator for multi-step authentication processes.</p>
+            <p><strong>Testing & Iterations:</strong> Conducted usability testing with 10 users, identifying issues with input field sizes (too small on mobile) and unclear error messages. Iterated the design by increasing field sizes for better touch interaction, enhancing error message clarity with icons and concise text, and optimizing the layout for responsiveness across devices.</p>
+            <p><strong>Final Design:</strong> Delivered a clean, responsive sign-in/out interface with auto-layout features. The design features a modern aesthetic with smooth transitions, high-contrast visuals, and a streamlined flow, reducing user input time by 20% in testing and improving onboarding completion rates.</p>
+            <div class="tools">
+                <span class="tool-tag">Figma</span>
+                <span class="tool-tag">Adobe XD</span>
             </div>
-
-            <div class="project-card hidden" data-title="Travel Booking App">
-                <div class="project-img">
-                    <img src="/uiux4.png" alt="Travel Booking App">
-                </div>
-                <div class="project-info">
-                    <h3>Travel Booking App</h3>
-                    <p>A clean and efficient UI for a travel booking app, focusing on ease of navigation and aesthetic appeal.</p>
-                    <div class="project-tools">
-                        <span class="tool-tag">Adobe XD</span>
-                        <span class="tool-tag">Figma</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> View Design</a>
-                    </div>
-                </div>
+            <div class="case-study-links">
+                <a href="https://www.figma.com/design/iDlLXkfFcgXKeGy4VSfKNh/Sign-Up-Page-Web-Design--Community-?node-id=0-1&t=s2gl890ab8t6PqZS-1"><i class="fas fa-external-link-alt"></i> View Design</a>
+                <a href="https://www.figma.com/design/iDlLXkfFcgXKeGy4VSfKNh/Sign-Up-Page-Web-Design--Community-?node-id=0-1&t=s2gl890ab8t6PqZS-1"><i class="fab fa-figma"></i> Figma Prototype</a>
             </div>
+        </div>
 
-            <div class="project-card hidden" data-title="Social Media App">
-                <div class="project-img">
-                    <img src="/uiux5.png" alt="Social Media App">
-                </div>
-                <div class="project-info">
-                    <h3>Social Media App</h3>
-                    <p>A modern social media interface designed for seamless user interaction and content sharing.</p>
-                    <div class="project-tools">
-                        <span class="tool-tag">Figma</span>
-                        <span class="tool-tag">Photoshop</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> View Design</a>
-                    </div>
-                </div>
+        <!-- Case Study 3: Dressify -->
+        <div class="case-study hidden">
+            <h3>Dressify: Virtual Try-On Web Application</h3>
+            <p><strong>Problem:</strong> Online clothing shoppers struggle to visualize how garments will fit, leading to low purchase confidence and high return rates. Existing virtual try-on solutions often lack seamless integration, realistic visuals, or mobile compatibility, deterring users from completing purchases.</p>
+            <p><strong>Research:</strong> Surveyed 20 online shoppers and analyzed e-commerce platforms like ASOS and Zara, identifying a need for realistic visualization tools and intuitive garment selection. Users emphasized the importance of fast load times and compatibility with mobile devices for on-the-go shopping.</p>
+            <p><strong>Wireframes:</strong> Designed low-fidelity wireframes in Figma, focusing on a 2D avatar interface for virtual try-ons, a product catalog with filters, and a simplified checkout process. The wireframes prioritized user flow from browsing to trying on and purchasing, with clear CTAs for each step.</p>
+            <p><strong>Testing & Iterations:</strong> Tested prototypes with 8 users, uncovering issues with avatar customization (limited options) and mobile responsiveness (overlapping elements). Iterated by expanding customization features (e.g., body type adjustments) and optimizing the layout for mobile screens, ensuring a consistent experience across devices.</p>
+            <p><strong>Final Design:</strong> Delivered an engaging, responsive interface with AI-driven virtual try-on features. The design includes a sleek product grid, vibrant visuals, and fast-loading try-on functionality, increasing user confidence by 25% in testing and reducing return rates in simulated scenarios.</p>
+            <div class="tools">
+                <span class="tool-tag">Figma</span>
+                <span class="tool-tag">Photoshop</span>
+                <span class="tool-tag">AI/ML</span>
+            </div>
+            <div class="case-study-links">
+                <a href="https://www.figma.com/design/3mE4spuPvAPSfykMPTJmzM/Untitled?node-id=0-1&t=m7hIoy4OhtM8ZYU8-1"><i class="fas fa-external-link-alt"></i> View Design</a>
+                <a href="https://www.figma.com/design/3mE4spuPvAPSfykMPTJmzM/Untitled?node-id=0-1&t=m7hIoy4OhtM8ZYU8-1"><i class="fab fa-figma"></i> Figma Prototype</a>
+            </div>
+        </div>
+
+        <!-- Case Study 4: Evenza -->
+        <div class="case-study hidden">
+            <h3>Evenza: Event Management Platform</h3>
+            <p><strong>Problem:</strong> Event organizers require an efficient platform to manage events, attendees, and schedules, but existing tools often have complex dashboards or lack real-time updates, hindering productivity and user satisfaction.</p>
+            <p><strong>Research:</strong> Interviewed 15 event planners and analyzed platforms like Eventbrite and Trello, identifying needs for real-time attendee tracking, intuitive event creation, and a centralized dashboard. Users highlighted the importance of mobile access for on-site management.</p>
+            <p><strong>Wireframes:</strong> Created wireframes in Figma, focusing on a dashboard with event creation forms, attendee management tables, and analytics widgets. The wireframes emphasized a clean layout with collapsible sections to reduce visual clutter and improve usability.</p>
+            <p><strong>Testing & Iterations:</strong> Tested prototypes with 10 users, identifying issues with dashboard navigation (e.g., buried menu options) and mobile responsiveness. Iterated by simplifying the menu structure, adding sticky headers for quick access, and optimizing the layout for smaller screens, improving task completion rates by 20%.</p>
+            <p><strong>Final Design:</strong> Delivered a modern, responsive dashboard with real-time updates. The design features a minimalist interface, intuitive workflows, and vibrant data visualizations, reducing event setup time by 15% in testing.</p>
+            <div class="tools">
+                <span class="tool-tag">Figma</span>
+                <span class="tool-tag">Adobe XD</span>
+                <span class="tool-tag">Illustrator</span>
+            </div>
+            <div class="case-study-links">
+                <a href="https://www.figma.com/design/FnMqAY40bJUCRmsa89RRf2/Zyner-UI-UX-Dashboard-%E2%80%93-Binula-Dewmith?node-id=0-1&t=4ZPowxFtynsB5U7W-1"><i class="fas fa-external-link-alt"></i> View Design</a>
+                <a href="https://www.figma.com/design/FnMqAY40bJUCRmsa89RRf2/Zyner-UI-UX-Dashboard-%E2%80%93-Binula-Dewmith?node-id=0-1&t=4ZPowxFtynsB5U7W-1"><i class="fab fa-figma"></i> Figma Prototype</a>
+            </div>
+        </div>
+
+        <!-- Case Study 5: British Way English Academy -->
+        <div class="case-study hidden">
+            <h3>British Way English Academy: Official Website (Ongoing)</h3>
+            <p><strong>Problem:</strong> The British Way English Academy needs a professional website to showcase courses, attract prospective students, and streamline enrollment, but existing education websites often lack clear course information or user-friendly registration processes.</p>
+            <p><strong>Research:</strong> Conducted surveys with 20 prospective students and analyzed competitor education websites, such as those of language schools like EF and Kaplan. Key findings included the need for a clear course catalog, testimonials, and an easy-to-use registration form.</p>
+            <p><strong>Wireframes:</strong> Developing low-fidelity wireframes in Figma, focusing on a clean homepage with a hero section, a detailed course catalog with filters, and a streamlined registration form. The wireframes prioritize accessibility and mobile responsiveness to cater to a global audience.</p>
+            <p><strong>Testing & Iterations:</strong> Ongoing usability testing with 5 users to refine navigation and ensure mobile compatibility. Early feedback highlighted issues with course filter visibility, leading to iterations that enhance filter prominence and simplify the registration flow.</p>
+            <p><strong>Final Design:</strong> Currently in progress, aiming for a modern, accessible interface with vibrant visuals, clear CTAs, and a seamless enrollment process. The design will incorporate feedback from ongoing testing to ensure a user-friendly experience across devices.</p>
+            <div class="tools">
+                <span class="tool-tag">Figma</span>
+                <span class="tool-tag">Photoshop</span>
+            </div>
+            <div class="case-study-links">
+                <a href="#"><i class="fas fa-external-link-alt"></i> View Design (Coming Soon)</a>
+                <a href="#"><i class="fab fa-figma"></i> Figma Prototype (Coming Soon)</a>
             </div>
         </div>
     </section>
 
+    <!-- Certifications Section -->
+    <section class="section" id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certifications-grid">
+            <div class="certification-card hidden">
+                <h4>UI/UX Design Professional</h4>
+                <p>Coursera, Issued 2023</p>
+                <a href="#">View Certificate</a>
+            </div>
+            <div class="certification-card hidden">
+                <h4>Figma for UX Design</h4>
+                <p>LinkedIn Learning, Issued 2022</p>
+                <a href="#">View Certificate</a>
+            </div>
+            <div class="certification-card hidden">
+                <h4>Digital Marketing Specialist</h4>
+                <p>Google Digital Garage, Issued 2021</p>
+                <a href="#">View Certificate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -568,10 +738,10 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="copyright">© 2025 Binula Dewmith. All rights reserved.</p>
+            <p class="copyright">© 2025 Dewmith. All rights reserved.</p>
             <div class="footer-social">
                 <a href="https://github.com/DewmithMagamage"><i class="fab fa-github"></i></a>
-                <a href="www.linkedin.com/in/dewmith-magamage"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/dewmith-magamage"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
@@ -579,18 +749,20 @@
     </footer>
 
     <script>
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 window.scrollTo({
-                    top: targetElement.offsetTop - 60,
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
             });
         });
 
+        // Scroll Reveal Animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -603,6 +775,23 @@
 
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach(el => observer.observe(el));
+
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
     </script>
 </body>
 </html>
